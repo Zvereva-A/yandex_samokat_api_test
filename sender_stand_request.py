@@ -7,13 +7,10 @@ def post_new_order(body):
                          json=body,
                          headers=data.headers)
 
-def get_track_number():
-    response = post_new_order(data.order_body)
-    return response.json()["track"]
 
-def get_order_by_track():
+def get_order_by_track(track):
     t = "?t="
-    return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER_BY_TRACK + t + str(get_track_number()))
+    return requests.get(configuration.URL_SERVICE + configuration.GET_ORDER_BY_TRACK + t + str(track))
 
 
 
